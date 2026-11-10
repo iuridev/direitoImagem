@@ -24,13 +24,45 @@ header{height:64px;display:flex;align-items:center;justify-content:space-between
 .shade.r{left:0;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0))}
 .shade.l{right:0;background:linear-gradient(270deg,rgba(0,0,0,.18),rgba(0,0,0,0))}
 nav{height:76px;display:flex;align-items:center;justify-content:center;gap:18px}
-nav button{width:48px;height:48px;border-radius:50%;border:1.5px solid #3A5573;background:#14263D;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
-nav button:hover:not(:disabled){background:#0E6E72;border-color:#0E6E72}
+nav button:not(.pbtn){width:48px;height:48px;border-radius:50%;border:1.5px solid #3A5573;background:#14263D;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+nav button:not(.pbtn):hover:not(:disabled){background:#0E6E72;border-color:#0E6E72}
 nav button:disabled{opacity:.35;cursor:default}
 nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
 #ind{min-width:170px;text-align:center;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px}
 .hint{font-size:12px;color:#B8C7D6;text-align:center}
+
+.pbtn{height:48px;padding:0 18px;border-radius:24px;border:1.5px solid #E0773A;background:#E0773A;color:#14263D;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.pbtn:hover{background:#F0915A}
+.pbtn:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
+body.present{overflow:hidden}
+body.present header,body.present .stage,body.present nav{display:none}
+body.present .mobile{display:flex;position:fixed;inset:0;padding:0;gap:0;align-items:center;justify-content:center;background:#0B1A2C;z-index:10}
+body.present .mpage{display:none;border-radius:0;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+body.present .mpage.on{display:block;animation:pin .35s ease}
+@keyframes pin{from{opacity:0;transform:translateX(var(--dx,30px))}to{opacity:1;transform:none}}
+.pctl{display:none}
+body.present .pctl{display:flex;position:fixed;z-index:20}
+.pside{top:0;bottom:0;width:18%;align-items:center;border:0;background:transparent;color:#fff;cursor:pointer;opacity:.25;transition:opacity .2s}
+.pside:hover,.pside:focus-visible{opacity:1;outline:none}
+.pside svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+#pprev{left:0;justify-content:flex-start;padding-left:24px}
+#pnext{right:0;justify-content:flex-end;padding-right:24px}
+#pexit{top:16px;right:16px;height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #3A5573;background:rgba(20,38,61,.85);color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;cursor:pointer;align-items:center;gap:8px;opacity:.5}
+#pexit:hover,#pexit:focus-visible{opacity:1}
+#pcount{bottom:14px;right:20px;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;color:#B8C7D6;opacity:.7}
+
+body.mag header,body.mag nav{display:none}
+body.mag .stage{height:100vh}
+body.mag .pctl{display:flex;position:fixed;z-index:20}
+body.mag .pside{width:7%}
+#pmode{top:16px;right:150px;height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #3A5573;background:rgba(20,38,61,.85);color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;cursor:pointer;align-items:center;gap:8px;opacity:.5}
+#pmode:hover,#pmode:focus-visible{opacity:1}
+
+body.mag .pctl,body.present .pctl{transition:opacity .3s}
+body.mag:not(.ui) .pctl,body.present:not(.ui) .pctl{opacity:0 !important;pointer-events:none}
 .mobile{display:none}
+.mpage{overflow:hidden;background:#fff;position:relative}
+.mscale{width:559px;height:794px;transform-origin:top left}
 @media (max-width:760px){
   body{overflow:auto}
   .stage,nav{display:none}
@@ -97,7 +129,7 @@ nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
       <div style="font-size: 14px; color: #374151">Professores: Mariângela de Souza Moreira e Rogério Ribeiro Cellino</div>
     </div>
     <div style="border-top: 1px solid #C9D6DE; padding-top: 10px; font-size: 13px; line-height: 1.45; color: #374151"><span style="font-weight: 700; color: #14263D">Integrantes:</span> Caio Cavalcante Nascimento, João Manoel Vieira Crema, Sabrine Alves da Silva, Simone Soares e Iuri Santos Barreto</div>
-    <div style="margin-top: auto; display: flex; justify-content: space-between; font-size: 12px; color: #4B5563"><span>Turma: 1º Semestre - Direito - Noturno</span><span>Guarulhos • 2026</span></div>
+    <div style="margin-top: auto; display: flex; justify-content: space-between; font-size: 12px; color: #4B5563"><span>Turma: [TURMA]</span><span>Guarulhos • 2026</span></div>
   </div>
 </div><div class="shade r"></div></div><div class="face back" aria-label="Página 2"><div style="width: 559px; height: 794px; box-sizing: border-box; position: relative; overflow: hidden; background: #FFFFFF; font-family: 'Source Sans 3', sans-serif; color: #1F2933; padding: 32px 40px 56px 40px; display: flex; flex-direction: column; gap: 12px">
   <div style="display: flex; justify-content: flex-end; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 2px; color: #0E6E72">DIREITO CIVIL • A3</div>
@@ -536,7 +568,13 @@ nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
   <button id="prev" aria-label="Página anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
   <div><div id="ind" aria-live="polite">Capa</div><div class="hint">clique na página ou use as setas ← →</div></div>
   <button id="next" aria-label="Próxima página"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button class="pbtn" id="pstart" style="width:auto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/></svg>Apresentar</button>
 </nav>
+<button class="pctl pside" id="pprev" aria-label="Página anterior"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="pctl pside" id="pnext" aria-label="Próxima página"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+<button class="pctl" id="pexit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Sair (Esc)</button>
+<button class="pctl" id="pmode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg>Ampliar página</button>
+<div class="pctl" id="pcount" aria-live="polite"></div>
 <section class="mobile" id="mobile">
 <div class="mpage"><div class="mscale"><div style="width: 559px; height: 794px; box-sizing: border-box; position: relative; overflow: hidden; background: #FFFFFF; font-family: 'Source Sans 3', sans-serif; color: #1F2933; display: flex; flex-direction: column">
   <div style="background: #14263D; height: 470px; flex: none; box-sizing: border-box; padding: 40px 40px 0 40px; position: relative; display: flex; flex-direction: column">
@@ -1041,6 +1079,7 @@ nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
     book.style.transform='translateX('+shift+'px)';
     ind.textContent=cur===0?'Capa':(cur===N?'Contracapa • página 10':'Páginas '+(2*cur)+'–'+(2*cur+1)+' de 10');
     prev.disabled=cur===0; next.disabled=cur===N;
+    if(typeof label==='function') label();
   }
   function go(d){
     var n=Math.max(0,Math.min(N,cur+d)); if(n===cur) return;
@@ -1052,6 +1091,7 @@ nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
     book.style.transform='translateX('+shift+'px)';
     ind.textContent=cur===0?'Capa':(cur===N?'Contracapa • página 10':'Páginas '+(2*cur)+'–'+(2*cur+1)+' de 10');
     prev.disabled=cur===0; next.disabled=cur===N;
+    if(typeof label==='function') label();
     setTimeout(render,820);
   }
   leaves.forEach(function(l){
@@ -1060,24 +1100,82 @@ nav button:focus-visible{outline:3px solid #7FD1CB;outline-offset:2px}
   });
   prev.addEventListener('click',function(){go(-1);});
   next.addEventListener('click',function(){go(1);});
+  var mp=[].slice.call(document.querySelectorAll('.mpage')),pi=0,pres=false,mode='normal';
+  var pcount=document.getElementById('pcount'),pmode=document.getElementById('pmode');
+  function label(){ if(mode==='mag') pcount.textContent=ind.textContent; }
+  function pshow(d){
+    mp.forEach(function(m,i){m.classList.toggle('on',i===pi);});
+    if(d) mp[pi].style.setProperty('--dx',(d>0?40:-40)+'px');
+    pcount.textContent='Página '+(pi+1)+' de 10';
+    pfit();
+  }
+  function pgo(d){var n=Math.max(0,Math.min(9,pi+d)); if(n===pi) return; pi=n; pshow(d);}
+  function pfit(){
+    if(!pres) return;
+    var s=Math.min((window.innerHeight-24)/PH,(window.innerWidth-24)/PW);
+    var m=mp[pi]; m.style.width=(PW*s)+'px'; m.style.height=(PH*s)+'px';
+    m.firstElementChild.style.transform='scale('+s+')';
+  }
+  function fsOn(){ try{var el=document.documentElement; var r=el.requestFullscreen&&el.requestFullscreen(); if(r&&r.catch) r.catch(function(){});}catch(e){} }
+  function fsOff(){ try{if(document.fullscreenElement&&document.exitFullscreen) document.exitFullscreen().catch(function(){});}catch(e){} }
+  function toMag(){
+    if(mode==='single'){ cur=Math.floor((pi+1)/2); pres=false; document.body.classList.remove('present'); mp.forEach(function(m){m.classList.remove('on');}); render(); }
+    mode='mag'; document.body.classList.add('mag');
+    pmode.lastChild.textContent='Ampliar página';
+    fit(); label();
+  }
+  function toSingle(){
+    mode='single'; document.body.classList.remove('mag');
+    pres=true; document.body.classList.add('present');
+    pi=cur===0?0:Math.min(9,2*cur-1);
+    pmode.lastChild.textContent='Ver como revista';
+    pshow(0);
+  }
+  function pstart(){ toMag(); fsOn(); poke(); }
+  function pstop(){
+    if(mode==='single'){ cur=Math.floor((pi+1)/2); render(); }
+    mode='normal'; pres=false;
+    document.body.classList.remove('present'); document.body.classList.remove('mag');
+    mp.forEach(function(m){m.classList.remove('on');});
+    fsOff(); fit();
+  }
+  function step(d){ if(mode==='single') pgo(d); else go(d); }
+  document.getElementById('pstart').addEventListener('click',pstart);
+  document.getElementById('pexit').addEventListener('click',pstop);
+  pmode.addEventListener('click',function(){ if(mode==='mag') toSingle(); else toMag(); });
+  document.getElementById('pprev').addEventListener('click',function(){step(-1);});
+  document.getElementById('pnext').addEventListener('click',function(){step(1);});
+  mp.forEach(function(m){m.addEventListener('click',function(){if(mode==='single') pgo(1);});});
+  document.addEventListener('fullscreenchange',function(){setTimeout(function(){fit();pfit();},60);});
   document.addEventListener('keydown',function(e){
+    if(mode!=='normal'){
+      if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();step(1);}
+      else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1);}
+      else if(e.key==='Escape') pstop();
+      return;
+    }
     if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1);
   });
+  var uiT=null;
+  function poke(){ document.body.classList.add('ui'); clearTimeout(uiT); uiT=setTimeout(function(){document.body.classList.remove('ui');},2500); }
+  document.addEventListener('mousemove',poke); document.addEventListener('touchstart',poke,{passive:true});
   var sx=null;
   stage.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
   stage.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) go(dx<0?1:-1); sx=null; });
   function fit(){
-    var w=stage.clientWidth-48,h=stage.clientHeight-24;
-    var s=Math.min(w/(2*PW),h/PH,1.4); if(s<=0) s=0.3;
+    var mg=document.body.classList.contains('mag');
+    var w=stage.clientWidth-(mg?16:48),h=stage.clientHeight-(mg?12:24);
+    var s=Math.min(w/(2*PW),h/PH,mg?2.2:1.4); if(s<=0) s=0.3;
     scaler.style.transform='scale('+s+')';
     scaler.style.width=(2*PW)+'px'; scaler.style.height=PH+'px';
+    if(pres) return;
     var mw=Math.min(window.innerWidth-24,PW), ms=mw/PW;
     [].forEach.call(document.querySelectorAll('.mpage'),function(m){
       m.style.width=mw+'px'; m.style.height=(PH*ms)+'px';
       m.firstElementChild.style.transform='scale('+ms+')';
     });
   }
-  window.addEventListener('resize',fit); fit(); render();
+  window.addEventListener('resize',function(){fit();pfit();}); fit(); render();
 })();
 </script>
 </body>
